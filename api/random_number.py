@@ -7,7 +7,7 @@ app = Flask(__name__)
 socketio = SocketIO(app)
 
 @app.route('/')
-def index():
+def random_number():
     return render_template('random_number.html')
 
 def generate_random_number():
