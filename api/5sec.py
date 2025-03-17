@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('5sec.html')
 
 @app.route('/generate_number', methods=['POST'])
 def generate_number():
