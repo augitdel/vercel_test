@@ -6,13 +6,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
 </head>
 <body>
-    <div id="content">Original content</div>
+    <div id="number">Waiting for random number...</div>
 
     <script>
         var socket = io();
 
-        socket.on('update_content', function(data) {
-            document.getElementById('content').innerHTML = data.message;
+        socket.on('update_number', function(data) {
+            document.getElementById('number').innerHTML = data.number;
         });
     </script>
 </body>

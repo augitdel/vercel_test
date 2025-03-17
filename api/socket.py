@@ -1,3 +1,5 @@
+import time
+import random
 from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
 
@@ -6,14 +8,14 @@ socketio = SocketIO(app)
 
 @app.route('/')
 def index():
-    return render_template('socket_index.html')
+    return render_template('index.html')
 
-@app.route('/trigger_update')
-def trigger_update():
-    # Your function logic here
-    data = {"message": "Updated content from Flask!"}
-    socketio.emit('update_content', data)
-    return "Update triggered"
+def generate_random_number():
+    while True:
+        time.sleep(5)
+        number = random.randint(1, 100)
+        socketio.emit('update_number', {'number': number})
 
 if __name__ == '__main__':
+    socketio.start_background_task(generate_random_number)
     socketio.run(app, debug=True)
