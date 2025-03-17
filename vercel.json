@@ -8,7 +8,7 @@
      "routes": [
          {
              "src": "/(.*)",
-             "dest": "api/so5seccket.py"
+             "dest": "api/5sec.py"
          }
      ]
  }
