@@ -1,3 +1,5 @@
+# this is an example of how to NOT do it. this does NOT work.
+
 import time
 import random
 from flask import Flask, render_template

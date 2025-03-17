@@ -1,14 +1,14 @@
  {
      "builds": [
          {
-             "src": "api/random_number.py",
+             "src": "api/socket.py",
              "use": "@vercel/python"
          }
      ],
      "routes": [
          {
              "src": "/(.*)",
-             "dest": "api/random_number.py"
+             "dest": "api/socket.py"
          }
      ]
  }
