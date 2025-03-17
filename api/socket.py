@@ -1,21 +1,16 @@
-import time
 import random
-from flask import Flask, render_template
-from flask_socketio import SocketIO, emit
+from flask import Flask, jsonify, render_template
 
 app = Flask(__name__)
-socketio = SocketIO(app)
 
 @app.route('/')
 def index():
     return render_template('socket_index.html')
 
-def generate_random_number():
-    while True:
-        time.sleep(5)
-        number = random.randint(1, 100)
-        socketio.emit('update_number', {'number': number})
+@app.route('/generate_number', methods=['POST'])
+def generate_number():
+    number = random.randint(1, 100)
+    return jsonify({'number': number})
 
 if __name__ == '__main__':
-    socketio.start_background_task(generate_random_number)
-    socketio.run(app, debug=True)
+    app.run(debug=True)

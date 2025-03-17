@@ -2,17 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Flask WebSocket Example</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
+    <title>Generate Random Number</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <div id="number">Waiting for random number...</div>
+    <button id="generateButton">Generate Random Number</button>
+    <div id="number">Click the button to generate a random number</div>
 
     <script>
-        var socket = io();
-
-        socket.on('update_number', function(data) {
-            document.getElementById('number').innerHTML = data.number;
+        $(document).ready(function() {
+            $('#generateButton').click(function() {
+                $.ajax({
+                    type: 'POST',
+                    url: '/generate_number',
+                    success: function(response) {
+                        $('#number').html(response.number);
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
         });
     </script>
 </body>
