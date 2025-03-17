@@ -1,14 +1,14 @@
  {
      "builds": [
          {
-             "src": "api/socket.py",
+             "src": "api/5sec.py",
              "use": "@vercel/python"
          }
      ],
      "routes": [
          {
              "src": "/(.*)",
-             "dest": "api/socket.py"
+             "dest": "api/so5seccket.py"
          }
      ]
  }
