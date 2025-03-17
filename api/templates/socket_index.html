@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask WebSocket Example</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"></script>
+</head>
+<body>
+    <div id="content">Original content</div>
+
+    <script>
+        var socket = io();
+
+        socket.on('update_content', function(data) {
+            document.getElementById('content').innerHTML = data.message;
+        });
+    </script>
+</body>
+</html>
